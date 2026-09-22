@@ -46,6 +46,38 @@ comando gerado. Digite `vazio` para simular um frame sem detecção, e
 `sair` para encerrar. Bom para responder perguntas ao vivo do tipo "e se
 o alvo estivesse aqui?" sem precisar reescrever código.
 
+## `demo_video.py` — gera um vídeo (mp4 + gif) da demonstração
+
+Dependências extras, só para este script (não fazem parte do núcleo nem
+dos outros demos):
+
+```bash
+pip install matplotlib "imageio[ffmpeg]"
+```
+
+O extra `[ffmpeg]` baixa automaticamente um binário **portátil** de
+ffmpeg na primeira execução — não precisa instalar ffmpeg no sistema.
+
+```bash
+python examples/demo_video.py
+```
+
+Gera `examples/output/tracking_demo.mp4` e `tracking_demo.gif`: uma
+trajetória sintética de ~150 frames em que o alvo se move pela imagem e
+some por um trecho no meio, para mostrar visualmente a transição
+`TRACKING → SEARCHING → LOST → TRACKING`. Em cada frame:
+
+- `+` branco = centro da imagem (referência)
+- quadrado ciano = bounding box do alvo "detectado"
+- seta amarela = comando de correção gerado pelo núcleo, na direção certa
+- texto no topo = frame, estado (colorido: verde/amarelo/vermelho) e vx/vy
+
+Para editar a trajetória (velocidade, amplitude, quando o alvo "some"),
+edite a função `build_trajectory()` no topo do arquivo.
+
+O repositório já vem com um exemplo pronto em `output/` para você
+conferir sem precisar rodar nada primeiro.
+
 ## O que isso prova (e o que não prova)
 
 Prova que a lógica de decisão (geometria → controlador → máquina de
