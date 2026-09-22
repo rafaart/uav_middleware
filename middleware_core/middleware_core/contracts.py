@@ -20,7 +20,7 @@ from enum import Enum, auto
 
 @dataclass(frozen=True)
 class BoundingBox:
-    """Coordenadas em pixels, origem no canto superior-esquerdo da imagem."""
+    """Coordenadas em pixels,  origem no canto superior-esquerdo da imagem."""
 
     x_center: float  # px
     y_center: float  # px
@@ -96,4 +96,5 @@ class NavigationCommand:
         for name in ("vx", "vy", "vz", "yaw_rate"):
             value = getattr(self, name)
             if not -1.0 <= value <= 1.0:
-                raise ValueError(f"{name} deve estar em [-1.0, 1.0], recebido: {value}")
+                raise ValueError(
+                    f"{name} deve estar em [-1.0, 1.0], recebido: {value}")
