@@ -1,0 +1,23 @@
+[project]
+name = "middleware-core"
+version = "0.1.0"
+description = "Núcleo de decisão agnóstico a framework (sem ROS/MAVROS/OpenCV) do middleware de integração IA-UAV."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Rafael Santos Souza" }]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "pytest-cov>=4.1"]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["middleware_core*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
